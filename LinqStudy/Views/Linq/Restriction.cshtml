@@ -3,7 +3,8 @@
 }
 
 <div id="nav">当前位置: Linq学习之旅 - Restriction</div>
-<h2>1、Where - Simple 1</h2>
+<!--Where - Simple 1-->
+<h2 id="Linq1">1、Where - Simple 1</h2>
 <p>获取数据组中值小于5的元素</p>
 <pre>
     public void Linq1()
@@ -15,16 +16,144 @@
             where n < 5
             select n;
      
-        Console.WriteLine("Numbers < 5:");
+        Console.WriteLine("数据组中值小于5的元素：");
         foreach (var x in lowNums)
         {
             Console.WriteLine(x);
         }
     }
 </pre>
-<a href="/Linq/Restriction/1">点击运行</a>
+<a href="/Linq/Restriction1/">点击运行</a>
 <h3>运行结果：</h3>
-<div class="res"></div>
+<div class="res">@ViewData["WhereSimple1"]</div>
+<!--Where - Simple 2-->
+<h2 id="Linq2">2、Where - Simple 2</h2>
+<p>获取库存为0的产品</p>
+<pre>
+    public void Linq2()
+    {
+        List&lt;Product&gt; products = GetProductList();
+     
+        var soldOutProducts =
+            from p in products
+            where p.UnitsInStock == 0
+            select p;
+     
+        Console.WriteLine("库存为0的产品：");
+        foreach (var product in soldOutProducts)
+        {
+            Console.WriteLine(product.ProductName);
+        }
+    }
+</pre>
+<a href="/Linq/Restriction2/">点击运行</a>
+<h3>运行结果：</h3>
+<div class="res">
+    @if (ViewData["WhereSimple2"] != null)
+    {
+        @Html.Raw("库存为0的产品：")
+        foreach (var p in ViewData["WhereSimple2"] as List<LinqHelper.Product>)
+        {
+            @Html.Raw("<br/>" + p.ProductName)
+        }
+
+    }
+</div>
+<!--Where - Simple 3-->
+<h2 id="Linq3">3、Where - Simple 3</h2>
+<p>获取价格大小3.00M且库存不为0的产品</p>
+<pre>
+    public void Linq3()
+    {
+        List&lt;Product&gt; products = data.GetProductList();
+
+        var expensiveInStockProducts =
+            from prod in products
+            where prod.UnitsInStock > 0 && prod.UnitPrice > 3.00M
+            select prod;
+
+        Console.WriteLine("价格大小3.00M且库存不为0的产品：");
+        foreach (var product in expensiveInStockProducts)
+        {
+            Console.WriteLine(product.ProductName);
+        }
+    }
+</pre>
+<a href="/Linq/Restriction3/">点击运行</a>
+<h3>运行结果：</h3>
+<div class="res">
+    @if (ViewData["WhereSimple3"] != null)
+    {
+        @Html.Raw("价格大小3.00M且库存不为0的产品：")
+        foreach (var p in ViewData["WhereSimple3"] as List<LinqHelper.Product>)
+        {
+            @Html.Raw("<br/>" + p.ProductName)
+        }
+
+    }
+</div>
+<!--Where - Drilldown-->
+<h2 id="Linq4">4、Where - Drilldown(深度取数据)</h2>
+<p>获取华盛顿区域的客户及客户订单</p>
+<pre>
+    public void Linq4()
+    {
+        List&lt;Customer&gt; customers = GetCustomerList();
+     
+        var waCustomers =
+            from c in customers
+            where c.Region == "WA"
+            select c;
+     
+        Console.WriteLine("华盛顿区域的客户及客户订单:");
+        foreach (var customer in waCustomers)
+        {
+            Console.WriteLine("Customer {0}: {1}", customer.CustomerID, customer.CompanyName);
+            foreach (var order in customer.Orders)
+            {
+                Console.WriteLine("  Order {0}: {1}", order.OrderID, order.OrderDate);
+            }
+        }
+    }
+</pre>
+<a href="/Linq/Restriction4/">点击运行</a>
+<h3>运行结果：</h3>
+<div class="res">
+    @if (ViewData["WhereSimple4"] != null)
+    {
+        @Html.Raw("华盛顿区域的客户及客户订单:")
+        foreach (var c in ViewData["WhereSimple4"] as List<LinqHelper.Customer>)
+        {
+            @Html.Raw("<br/>Customer "+ c.CustomerID+ ":" + c.CompanyName )
+            foreach (var o in c.Orders)
+            {
+                @Html.Raw("<br/>---Order " + o.OrderID + ":" + o.OrderDate)
+            }
+        }
+
+    }
+</div> 
+<!--Where - Drilldown-->
+<h2 id="Linq5">5、Where - Indexed</h2>
+<p>元素长度大于元素索引</p>
+<pre>
+   public void Linq5()
+    {
+        string[] digits = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
+     
+        var shortDigits = digits.Where((digit, index) => digit.Length < index);
+     
+        Console.WriteLine("元素长度大于元素索引");
+        foreach (var d in shortDigits)
+        {
+            Console.WriteLine(d + " ");
+        }
+    }
+</pre>
+<a href="/Linq/Restriction5/">点击运行</a>
+<h3>运行结果：</h3>
+<div class="res">@ViewData["WhereSimple5"]</div>
+@Html.Raw("<script>goTo('"+ ViewData["Anchor"] +"');</script>")
 
 
 

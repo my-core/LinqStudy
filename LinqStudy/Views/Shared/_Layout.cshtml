@@ -2,47 +2,36 @@
 <html>
 <head>
     <title>@ViewBag.Title</title>
-    <style type="text/css">
-        body{font-family:微软雅黑;font-size:12px; margin:0px; padding:0px; }
-        a:link, a:visited, a:active { text-decoration:none;}
-        a:hover{ text-decoration:underline;}
-        h1,h2,h3,h4,h5{margin:0px; padding:0px;}
-        #head{height:60px; font-size:30px; line-height:60px; border:1px solid #D8DFEA; margin:10px 10px; padding:0px 24px;}
-        #nav_menu { height:60px; line-height:30px; margin: 0px 10px 0 10px;padding: 0; background: -moz-linear-gradient(center top , #2B6695, #0E4773) repeat scroll 0 0 #2B6695;box-shadow: -3px 1px 3px rgba(0, 0, 0, 0.25);}
-        #nav_menu a{font-size: 14px;padding-left: 24px; color:#fff;}
-        #nav_menu  a:hover,a:visited, a:active {color: #fff;}
-        #main{margin:5px 10px; border:1px solid #D8DFEA; padding:0px 24px;}
-        #nav{ line-height:30px; line-height:30px;border-bottom:1px solid #D8DFEA; }
-        h2{ font-size:14px; font-weight:bold; line-height:30px;}
-        h3{ font-size:13px; font-weight:bold; line-height:25px;}
-        p{ line-height:20px;}
-        .res{ line-height:20px;}
-    </style>
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/css/Site.css")" />
+    <script type="text/javascript" src="@Url.Content("~/Scripts/jquery-1.4.4.min.js")" ></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/js/jquery.scrollToTop.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/js/anchor.js")"></script>
 </head>
-
 <body>
-    <div id="head">Linq学习之旅</div>
-    <div id="nav_menu">
-        <a href="#" style="color:Red;">Start To Stuty LINQ:</a>
-        <a href="/Linq/Restriction">Restriction</a>
-        <a href="http://home.cnblogs.com/">Projection</a>
-        <a href="http://home.cnblogs.com/">Partitioning</a>
-        <a href="http://home.cnblogs.com/">Ordering</a>
-        <a href="http://home.cnblogs.com/">Grouping</a>
-        <a href="http://home.cnblogs.com/">Set</a>
-        <a href="http://home.cnblogs.com/">Conversion</a>
-        <a href="http://home.cnblogs.com/">Element</a>
-        <a href="http://home.cnblogs.com/">Generation</a>
-        <a href="http://home.cnblogs.com/">Quantifiers</a>
-        <a href="http://home.cnblogs.com/">Aggregate</a>
-        <a href="http://home.cnblogs.com/">Miscellaneous</a>
-        <a href="http://home.cnblogs.com/">Custom Sequence</a>
-        <a href="http://home.cnblogs.com/">Query Execution</a>
-        <a href="http://home.cnblogs.com/">Join</a>
+    <div id="top">
+        <div id="head">Linq学习之旅</div>
+        <div id="nav_menu">
+            <a href="#" style="color:Red;">Start To Stuty LINQ:</a>
+            <a href="/Linq/Restriction/" title="约束">Restriction</a>
+            <a href="http://home.cnblogs.com/" title="选择" >Projection</a>
+            <a href="http://home.cnblogs.com/" title="分割">Partitioning</a>
+            <a href="http://home.cnblogs.com/" title="排序">Ordering</a>
+            <a href="http://home.cnblogs.com/" title="分组">Grouping</a>
+            <a href="http://home.cnblogs.com/">Set</a>
+            <a href="http://home.cnblogs.com/">Conversion</a>
+            <a href="http://home.cnblogs.com/">Element</a>
+            <a href="http://home.cnblogs.com/">Generation</a>
+            <a href="http://home.cnblogs.com/">Quantifiers</a>
+            <a href="http://home.cnblogs.com/">Aggregate</a>
+            <a href="http://home.cnblogs.com/">Miscellaneous</a>
+            <a href="http://home.cnblogs.com/">Custom Sequence</a>
+            <a href="http://home.cnblogs.com/">Query Execution</a>
+            <a href="http://home.cnblogs.com/">Join</a>
+        </div>
     </div>
     <div id="main">
         @RenderBody()
     </div>
-   
+    <a href="#top" id="toTop"></a>
 </body>
 </html>
