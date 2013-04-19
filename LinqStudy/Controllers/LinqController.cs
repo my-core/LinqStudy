@@ -57,7 +57,51 @@ namespace LinqStudy.Controllers
         }
         #endregion
 
-        #region Restriction--Select语法
+        #region Description--Select语法
+        public Description _description;
+        public Description description
+        {
+            get
+            {
+                if (_description == null)
+                    _description = new Description();
+                return _description;
+            }
+        }
+        public ActionResult Description()
+        {
+            return View();
+        }
+        public ActionResult Description1()
+        {
+            ViewData["SelectSimple1"] = description.Linq1();
+            ViewData["Anchor"] = "Linq1";
+            return View("Description");
+        }
+        //public ActionResult Description2()
+        //{
+        //    ViewData["WhereSimple2"] = description.Linq2();
+        //    ViewData["Anchor"] = "Linq2";
+        //    return View("Restriction");
+        //}
+        //public ActionResult Description3()
+        //{
+        //    ViewData["WhereSimple3"] = description.Linq3();
+        //    ViewData["Anchor"] = "Linq3";
+        //    return View("Restriction");
+        //}
+        //public ActionResult Description4()
+        //{
+        //    ViewData["WhereSimple4"] = description.Linq4();
+        //    ViewData["Anchor"] = "Linq4";
+        //    return View("Restriction");
+        //}
+        //public ActionResult Description5()
+        //{
+        //    ViewData["WhereSimple5"] = description.Linq5();
+        //    ViewData["Anchor"] = "Linq5";
+        //    return View("Restriction");
+        //}
         #endregion
 
     }
