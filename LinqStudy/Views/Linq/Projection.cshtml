@@ -1,0 +1,118 @@
+﻿@{
+    ViewBag.Title = "Projection";
+}
+
+<div id="nav">当前位置: Linq学习之旅 - Projection</div>
+<!--Select - Simple 1-->
+<h2 id="Linq1">1、Select - Simple 1</h2>
+<p>对每一项元素加1</p>
+<pre>
+    public void Linq1()
+    {
+        int[] numbers = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
+     
+        var numsPlusOne =
+            from n in numbers
+            select n + 1;
+     
+        Console.WriteLine("对每一项元素加1后：");
+        foreach (var x in numsPlusOne)
+        {
+            Console.WriteLine(x);
+        }
+    }
+</pre>
+<a href="/Linq/Projection1/">点击运行</a>
+<h3>运行结果：</h3>
+<div class="res">@ViewData["SelectSimple1"]</div>
+<!--Select - Simple 2-->
+<h2 id="Linq2">2、Select - Simple 2</h2>
+<p>获取所有产品名集合</p>
+<pre>
+    public void Linq2()
+    {
+        List&lt;Product&gt; products = GetProductList();
+ 
+        var productNames =
+            from p in products
+            select p.ProductName;
+ 
+        Console.WriteLine("获取产品的名称集合:");
+        foreach (var productName in productNames)
+        {
+            Console.WriteLine(productName);
+        }
+    }
+</pre>
+<a href="/Linq/Projection2/">点击运行</a>
+<h3>运行结果：</h3>
+<div class="res">@ViewData["SelectSimple2"]</div>
+<!--Select - Transformation-->
+<h2 id="Linq3">3、Select - 转换</h2>
+<p>选择产生一系列的字符串代表一个整数序列的文本版本</p>
+<pre>
+    public void Linq3()
+    {
+        List&lt;Product&gt; products = GetProductList();
+ 
+        var productNames =
+            from p in products
+            select p.ProductName;
+ 
+        Console.WriteLine("选择产生一系列的字符串代表一个整数序列的文本版本:");
+        foreach (var productName in productNames)
+        {
+            Console.WriteLine(productName);
+        }
+    }
+</pre>
+<a href="/Linq/Projection3/">点击运行</a>
+<h3>运行结果：</h3>
+<div class="res">@ViewData["SelectSimple3"]</div>
+<!--Select - Anonymous Types 1-->
+<h2 id="Linq4">4、Select - 匿名类型1</h2>
+<p>选择产生一系列原始数组中的每一个字的大写和小写版本</p>
+<pre>
+    public void Linq4() 
+    {
+        string[] words = { "aPPLE", "BlUeBeRrY", "cHeRry" };
+
+        var upperLowerWords =
+            from w in words
+            select new {Upper = w.ToUpper(), Lower = w.ToLower()};
+
+        foreach (var ul in upperLowerWords) {
+            Console.WriteLine("Uppercase: {0}, Lowercase: {1}", ul.Upper, ul.Lower);
+        }
+    }
+</pre>
+<a href="/Linq/Projection4/">点击运行</a>
+<h3>运行结果：</h3>
+<div class="res">@ViewData["SelectSimple4"]</div>
+<!--Select - Anonymous Types 2-->
+<h2 id="Linq5">5、Select - 匿名类型2</h2>
+<p>选择产生一系列包含文字表示的数字和它们的长度是否是偶数还是奇数</p>
+<pre>
+    public void Linq5() {
+        int[] numbers = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
+        string[] strings = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
+
+        var digitOddEvens =
+            from n in numbers
+            select new {Digit = strings[n], Even = (n % 2 == 0)};
+
+        foreach (var d in digitOddEvens) {
+            Console.WriteLine("数字{0}是{1}.", d.Digit, d.Even ? "even" : "odd");
+        }
+    }
+</pre>
+<a href="/Linq/Projection5/">点击运行</a>
+<h3>运行结果：</h3>
+<div class="res">
+    @if (ViewData["SelectSimple5"] != null)
+    {
+        Html.Raw(ViewData["SelectSimple5"].ToString());
+    }
+</div>
+
+@Html.Raw("<script>goTo('" + ViewData["Anchor"] + "');</script>")

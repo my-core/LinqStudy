@@ -58,50 +58,50 @@ namespace LinqStudy.Controllers
         #endregion
 
         #region Description--Select语法
-        public Description _description;
-        public Description description
+        public Projection _description;
+        public Projection description
         {
             get
             {
                 if (_description == null)
-                    _description = new Description();
+                    _description = new Projection();
                 return _description;
             }
         }
-        public ActionResult Description()
+        public ActionResult Projection()
         {
             return View();
         }
-        public ActionResult Description1()
+        public ActionResult Projection1()
         {
             ViewData["SelectSimple1"] = description.Linq1();
             ViewData["Anchor"] = "Linq1";
-            return View("Description");
+            return View("Projection");
         }
-        //public ActionResult Description2()
-        //{
-        //    ViewData["WhereSimple2"] = description.Linq2();
-        //    ViewData["Anchor"] = "Linq2";
-        //    return View("Restriction");
-        //}
-        //public ActionResult Description3()
-        //{
-        //    ViewData["WhereSimple3"] = description.Linq3();
-        //    ViewData["Anchor"] = "Linq3";
-        //    return View("Restriction");
-        //}
-        //public ActionResult Description4()
-        //{
-        //    ViewData["WhereSimple4"] = description.Linq4();
-        //    ViewData["Anchor"] = "Linq4";
-        //    return View("Restriction");
-        //}
-        //public ActionResult Description5()
-        //{
-        //    ViewData["WhereSimple5"] = description.Linq5();
-        //    ViewData["Anchor"] = "Linq5";
-        //    return View("Restriction");
-        //}
+        public ActionResult Projection2()
+        {
+            ViewData["SelectSimple2"] = description.Linq2();
+            ViewData["Anchor"] = "Linq2";
+            return View("Projection");
+        }
+        public ActionResult Projection3()
+        {
+            ViewData["SelectSimple3"] = description.Linq3();
+            ViewData["Anchor"] = "Linq3";
+            return View("Projection");
+        }
+        public ActionResult Projection4()
+        {
+            ViewData["SelectSimple4"] = description.Linq4();
+            ViewData["Anchor"] = "Linq4";
+            return View("Projection");
+        }
+        public ActionResult Projection5()
+        {
+            ViewData["SelectSimple5"] = description.Linq5();
+            ViewData["Anchor"] = "Linq5";
+            return View("Projection");
+        }
         #endregion
 
     }

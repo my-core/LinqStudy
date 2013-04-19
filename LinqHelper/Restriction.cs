@@ -6,6 +6,9 @@ using System.ComponentModel;
 
 namespace LinqHelper
 {
+    /// <summary>
+    /// 约束条件--Where语法使用
+    /// </summary>
     public class Restriction
     {
         
