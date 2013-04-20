@@ -88,6 +88,32 @@ namespace LinqHelper
             }
             return sb.ToString();
         }
+        [Description("对产品中的属性UnitPrice进行重名成Price")]
+        public dynamic Linq6()
+        {
+            List<Products> list = new List<Products>();
+            List<Product> products = data.GetProductList();
+            var productInfos =
+                from p in products
+                select new { p.ProductName, p.Category, Price = p.UnitPrice };
+            foreach (var productInfo in productInfos)
+            {
+                Products p = new Products();
+                p.ProductName = productInfo.ProductName;
+                p.Category = productInfo.Category;
+                p.Price = productInfo.Price;
+                list.Add(p);
+            }
+            return list;
+        }
         
     }
+    public class Products
+    {
+        public string ProductName;
+        public string Category;
+        public decimal Price;
+
+    }
+ 
 }

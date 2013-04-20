@@ -102,6 +102,12 @@ namespace LinqStudy.Controllers
             ViewData["Anchor"] = "Linq5";
             return View("Projection");
         }
+        public ActionResult Projection6()
+        {
+            ViewData["SelectSimple6"] = description.Linq6();
+            ViewData["Anchor"] = "Linq6";
+            return View("Projection");
+        }
         #endregion
 
     }
