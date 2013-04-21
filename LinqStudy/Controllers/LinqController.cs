@@ -108,6 +108,48 @@ namespace LinqStudy.Controllers
             ViewData["Anchor"] = "Linq6";
             return View("Projection");
         }
+        public ActionResult Projection7()
+        {
+            ViewData["SelectSimple7"] = description.Linq7();
+            ViewData["Anchor"] = "Linq7";
+            return View("Projection");
+        }
+        public ActionResult Projection8()
+        {
+            ViewData["SelectSimple8"] = description.Linq8();
+            ViewData["Anchor"] = "Linq8";
+            return View("Projection");
+        }
+        public ActionResult Projection9()
+        {
+            ViewData["SelectSimple9"] = description.Linq9();
+            ViewData["Anchor"] = "Linq9";
+            return View("Projection");
+        }
+        public ActionResult Projection10()
+        {
+            ViewData["SelectSimple10"] = description.Linq10();
+            ViewData["Anchor"] = "Linq10";
+            return View("Projection");
+        }
+        public ActionResult Projection11()
+        {
+            ViewData["SelectSimple11"] = description.Linq11();
+            ViewData["Anchor"] = "Linq11";
+            return View("Projection");
+        }
+        public ActionResult Projection12()
+        {
+            ViewData["SelectSimple12"] = description.Linq12();
+            ViewData["Anchor"] = "Linq12";
+            return View("Projection");
+        }
+        public ActionResult Projection13()
+        {
+            ViewData["SelectSimple13"] = description.Linq13();
+            ViewData["Anchor"] = "Linq13 ";
+            return View("Projection");
+        }
         #endregion
 
     }

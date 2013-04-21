@@ -73,8 +73,9 @@ namespace LinqHelper
             return sb.ToString();
         }
         [Description("选择产生一系列包含文字表示的数字和它们的长度是否是偶数还是奇数")]
-        public string Linq5()
+        public List<string> Linq5()
         {
+            List<string> list = new List<string>();
             StringBuilder sb = new StringBuilder();
             int[] numbers = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
             string[] strings = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
@@ -84,9 +85,9 @@ namespace LinqHelper
             sb.Append("选择产生一系列包含文字表示的数字和它们的长度是否是偶数还是奇数：");
             foreach (var s in digitOddEvens)
             {
-                sb.AppendFormat("<br/>数字{0}是{1}.", s.Digit, s.Even ? "偶数" : "奇数");
+                list.Add(String.Format("数字{0}是{1}.", s.Digit, s.Even ? "偶数" : "奇数"));
             }
-            return sb.ToString();
+            return list;
         }
         [Description("对产品中的属性UnitPrice进行重名成Price")]
         public dynamic Linq6()
@@ -106,8 +107,115 @@ namespace LinqHelper
             }
             return list;
         }
-        
+        [Description("产生一系列数字及数字的值是否等于索引")]
+        public List<string> Linq7()
+        {
+            List<string> list = new List<string>();
+            int[] numbers = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
+            var numsInPlace = numbers.Select((num, index) => new { Num = num, InPlace = (num == index) });
+            foreach (var n in numsInPlace)
+            {
+                list.Add(String.Format("{0}: {1}", n.Num, n.InPlace));
+            }
+            return list;
+        }
+        [Description("产生一系列索引小于5的数组元素")]
+        public List<string> Linq8()
+        {
+            List<string> list = new List<string>();
+            int[] numbers = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
+            string[] digits = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
+            var numsInPlace =
+                from n in numbers
+                where n < 5
+                select digits[n];
+            foreach (var n in numsInPlace)
+            {
+                list.Add(n);
+            }
+            return list;
+        }
+        [Description("产生两个数组中值对比的复合数据")]
+        public List<string> Linq9()
+        {
+            List<string> list = new List<string>();
+            int[] numbersA = { 0, 2, 4, 5, 6, 8, 9 };
+            int[] numbersB = { 1, 3, 5, 7, 8 };
+            var pairs =
+                from a in numbersA
+                from b in numbersB
+                where a < b
+                select new { a,b};
+            foreach (var p in pairs)
+            {
+                list.Add(String.Format("{0} is less than {1}", p.a, p.b));
+            }
+            return list;
+        }
+        public List<string> Linq10()
+        {
+            List<string> list = new List<string>();
+            List<Customer> customers = data.GetCustomerList();
+            var orders =
+                from c in customers
+                from o in c.Orders
+                where o.Total < 50.00M
+                select new { c.CustomerID, o.OrderID, o.Total };
+            foreach (var p in orders)
+            {
+                list.Add(String.Format("CustomerID={0},OrderID={1},Total={2}",p.CustomerID,p.OrderID,p.Total));
+            }
+            return list;
+        }
+        public List<string> Linq11()
+        {
+            List<string> list = new List<string>();
+            List<Customer> customers = data.GetCustomerList();
+            var orders =
+                from c in customers
+                from o in c.Orders
+                where o.OrderDate >= new DateTime(1998, 5, 1)
+                select new { c.CustomerID, o.OrderID, o.OrderDate };
+            foreach (var p in orders)
+            {
+                list.Add(String.Format("CustomerID={0},OrderID={1},OrderDate={2}", p.CustomerID, p.OrderID, p.OrderDate));
+            }
+            return list;
+        }
+        public List<string> Linq12()
+        {
+            List<string> list = new List<string>();
+            List<Customer> customers = data.GetCustomerList();
+            var orders =
+                from c in customers
+                where c.Region == "WA"
+                from o in c.Orders
+                where o.OrderDate >= new DateTime(1998, 1, 1)
+                select new { c.CustomerID, o.OrderID, };
+            foreach (var p in orders)
+            {
+                list.Add(String.Format("CustomerID={0},OrderID={1}", p.CustomerID, p.OrderID));
+            }
+            return list;
+        }
+        public List<string> Linq13()
+        {
+            List<string> list = new List<string>();
+            List<Customer> customers = data.GetCustomerList();
+            var customerOrders =
+                customers.SelectMany(
+                    (cust, custIndex) =>
+                    cust.Orders.Select(o => "Customer #" + (custIndex + 1) +
+                                            " has an order with OrderID " + o.OrderID));
+            foreach (var p in customerOrders)
+            {
+                list.Add(p);
+            }
+            return list;
+           
+        }
     }
+  
     public class Products
     {
         public string ProductName;

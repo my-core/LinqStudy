@@ -111,14 +111,18 @@
 <div class="res">
     @if (ViewData["SelectSimple5"] != null)
     {
-        Html.Raw(ViewData["SelectSimple5"].ToString());
+        @Html.Raw("产生一系列包含文字表示的数字和它们的长度是否是偶数还是奇数：")
+        foreach (var p in ViewData["SelectSimple5"] as List<string>)
+        {
+            @Html.Raw("<br/>"+ p.ToString())
+        }
     }
 </div>
 <!--Select - Anonymous Types 3-->
 <h2 id="Linq6">6、Select - 匿名类型3</h2>
 <p>对产品中的属性UnitPrice进行重名成Price</p>
 <pre>
-    public void Linq11() 
+    public void Linq6() 
     { 
         List&lt;Product&gt; products = GetProductList(); 
   
@@ -139,9 +143,233 @@
      @if (ViewData["SelectSimple6"] != null)
      {
         @Html.Raw("对产品中的属性UnitPrice进行重名成Price：")
-        foreach (var p in ViewData["SelectSimple6"] as List<LinqHelper.Products>)
+   foreach (var p in ViewData["SelectSimple6"] as List<LinqHelper.Products>)
+   {
+                @Html.Raw("<br/>" + p.ProductName + " - " + p.Category + " - " + p.Price)
+   }
+     }
+</div>
+<!--Select - Indexed-->
+<h2 id="Linq7">7、Select - 索引</h2>
+<p>产生一系列数字及数字的值是否等于索引</p>
+<pre>
+    public void Linq7()
+    {
+        int[] numbers = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
+ 
+        var numsInPlace = numbers.Select((num, index) => new { Num = num, InPlace = (num == index) });
+ 
+        Console.WriteLine("产生一系列数字及数字的值是否等于索引：");
+        foreach (var n in numsInPlace)
         {
-            @Html.Raw("<br/>" + p.ProductName + " - " + p.Category + " - " + p.Price)
+            Console.WriteLine("{0}: {1}", n.Num, n.InPlace);
+        }
+    }
+</pre>
+<a href="/Linq/Projection7/">点击运行</a>
+<h3>运行结果：</h3>
+<div class="res">
+     @if (ViewData["SelectSimple7"] != null)
+     {
+        @Html.Raw("产生一系列数字及数字的值是否等于索引：")
+        foreach (var p in ViewData["SelectSimple7"] as List<string>)
+        {
+            @Html.Raw("<br/>" + p.ToString())
+        }
+     }
+</div>
+<!--Select - Indexed-->
+<h2 id="Linq8">8、Select - 过滤</h2>
+<p>产生一系列索引小于5的数组元素</p>
+<pre>
+    public void Linq8()
+    {
+        int[] numbers = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
+        string[] digits = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
+ 
+        var lowNums =
+            from n in numbers
+            where n < 5
+            select digits[n];
+ 
+        Console.WriteLine("Numbers < 5:");
+        foreach (var num in lowNums)
+        {
+            Console.WriteLine(num);
+        }
+    }
+</pre>
+<a href="/Linq/Projection8/">点击运行</a>
+<h3>运行结果：</h3>
+<div class="res">
+     @if (ViewData["SelectSimple8"] != null)
+     {
+        @Html.Raw("产生一系列索引大于5的数组元素：")
+        foreach (var p in ViewData["SelectSimple8"] as List<string>)
+        {
+            @Html.Raw("<br/>" + p.ToString())
+        }
+     }
+</div>
+<!--Select - Indexed-->
+<h2 id="Linq9">9、Select - 过滤1</h2>
+<p>产生一系列索引小于5的数组元素</p>
+<pre>
+    public void Linq9()
+    {
+        int[] numbersA = { 0, 2, 4, 5, 6, 8, 9 };
+        int[] numbersB = { 1, 3, 5, 7, 8 };
+ 
+        var pairs =
+            from a in numbersA
+            from b in numbersB
+            where a < b
+            select new { a, b };
+ 
+        Console.WriteLine("Pairs where a < b:");
+        foreach (var pair in pairs)
+        {
+            Console.WriteLine("{0} is less than {1}", pair.a, pair.b);
+        }
+    }
+</pre>
+<a href="/Linq/Projection9/">点击运行</a>
+<h3>运行结果：</h3>
+<div class="res">
+     @if (ViewData["SelectSimple9"] != null)
+     {
+        @Html.Raw("Pairs where a < b:：")
+         foreach (var p in ViewData["SelectSimple9"] as List<string>)
+        {
+            @Html.Raw("<br/>" + p.ToString())
+        }
+     }
+</div>
+<!--Select - Indexed-->
+<h2 id="Linq10">10、Select - 过滤2</h2>
+<p>过滤过订单总价小于500的客户及订单信息</p>
+<pre>
+    public void Linq10()
+    {
+        List&lt;Customer&gt; customers = GetCustomerList();
+ 
+        var orders =
+            from c in customers
+            from o in c.Orders
+            where o.Total < 500.00M
+            select new { c.CustomerID, o.OrderID, o.Total };
+ 
+        ObjectDumper.Write(orders);
+    }
+</pre>
+<a href="/Linq/Projection10/">点击运行</a>
+<h3>运行结果：</h3>
+<div class="res">
+     @if (ViewData["SelectSimple10"] != null)
+     {
+        @Html.Raw("过滤过订单总价小于50的客户及订单信息：")
+         foreach (var p in ViewData["SelectSimple10"] as List<string>)
+        {
+            @Html.Raw("<br/>" + p.ToString())
+        }
+     }
+</div>
+<!--Select - Indexed-->
+<h2 id="Linq11">11、Select - 过滤3</h2>
+<p>过滤过订单时间大于1998-05-01的客户及订单信息</p>
+<pre>
+    public void Linq11()
+    {
+        List&lt;Customer&gt; customers = GetCustomerList();
+ 
+        var orders =
+            from c in customers
+            from o in c.Orders
+            where o.OrderDate >= new DateTime(1998, 5, 1)
+            select new { c.CustomerID, o.OrderID, o.OrderDate };
+ 
+        ObjectDumper.Write(orders);
+    }
+</pre>
+<a href="/Linq/Projection11/">点击运行</a>
+<h3>运行结果：</h3>
+<div class="res">
+     @if (ViewData["SelectSimple11"] != null)
+     {
+        @Html.Raw("过滤过订单时间大于1998-05-01的客户及订单信息：")
+         foreach (var p in ViewData["SelectSimple11"] as List<string>)
+        {
+            @Html.Raw("<br/>" + p.ToString())
+        }
+     }
+</div>
+<!--Select - Indexed-->
+<h2 id="Linq12">12、Select - 多重条件过滤</h2>
+<p>过滤出属于WA区域且订单时间大于1998-1-1的客户及订单信息</p>
+<pre>
+    public void Linq12()
+    {
+        List&lt;Customer&gt; customers = GetCustomerList();
+ 
+        var orders =
+            from c in customers
+            where c.Region == "WA"
+            from o in c.Orders
+            where o.OrderDate >= new DateTime(1997, 1, 1)
+            select new { c.CustomerID, o.OrderID };
+ 
+        ObjectDumper.Write(orders);
+    }
+</pre>
+<a href="/Linq/Projection12/">点击运行</a>
+<h3>运行结果：</h3>
+<div class="res">
+     @if (ViewData["SelectSimple12"] != null)
+     {
+        @Html.Raw("过滤出属于WA区域及订单时间大于1998-1-1的客户及订单信息：")
+         foreach (var p in ViewData["SelectSimple12"] as List<string>)
+        {
+            @Html.Raw("<br/>" + p.ToString())
+        }
+     }
+</div>
+<!--Select - Indexed-->
+<h2 id="Linq13">13、SelectMany - 循环查询(嵌套)</h2>
+<p>获取每个客户对应的订单信息的集合</p>
+<pre>
+    public void Linq13()
+    {
+        List&lt;Customer&gt; customers = GetCustomerList();
+ 
+        var customerOrders =
+            customers.SelectMany(
+                (cust, custIndex) =>
+                cust.Orders.Select(o => "Customer #" + (custIndex + 1) +
+                                        " has an order with OrderID " + o.OrderID));
+ 
+        ObjectDumper.Write(customerOrders);
+    }
+</pre>
+<a href="/Linq/Projection13/">点击运行</a>
+<h3>运行结果：</h3>
+<div class="res">
+     @if (ViewData["SelectSimple13"] != null)
+     {
+         @Html.Raw("获取每个客户对应的订单信息的集合：");
+        int l=(ViewData["SelectSimple13"] as List<string>).Count;
+        int i=0;
+        foreach (var p in ViewData["SelectSimple13"] as List<string>)
+        {
+            i++;
+            if (i < 10 || i > l - 10)
+            {
+                @Html.Raw("<br/>" + p.ToString());
+            }
+            else if(i==11)
+            { 
+                 @Html.Raw("<br/>---------------此处省略N多条记录！！-----------------");
+            }
+
         }
      }
 </div>
