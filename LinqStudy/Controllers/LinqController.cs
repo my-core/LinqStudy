@@ -152,5 +152,40 @@ namespace LinqStudy.Controllers
         }
         #endregion
 
+        #region Partitioning--Take语法
+        public Partitioning _partitioning;
+        public Partitioning partitioning
+        {
+            get
+            {
+                if (_partitioning == null)
+                    _partitioning = new Partitioning();
+                return _partitioning;
+            }
+        }
+        public ActionResult Partitioning()
+        {
+            return View();
+        }
+        public ActionResult Partitioning1()
+        {
+            ViewData["TakeSimple1"] = partitioning.Linq1();
+            ViewData["Anchor"] = "Linq1";
+            return View("Partitioning");
+        }
+        public ActionResult Partitioning2()
+        {
+            ViewData["TakeSimple2"] = partitioning.Linq2();
+            ViewData["Anchor"] = "Linq2";
+            return View("Partitioning");
+        }
+        public ActionResult Partitioning3()
+        {
+            ViewData["SkipSimple1"] = partitioning.Linq3();
+            ViewData["Anchor"] = "Linq3";
+            return View("Partitioning");
+        }
+        #endregion
+
     }
 }

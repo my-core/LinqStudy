@@ -1,0 +1,77 @@
+﻿@{
+    ViewBag.Title = "Partitioning";
+}
+<div id="nav">当前位置: Linq学习之旅 - Partitioning</div>
+<!--Take - Simple 1-->
+<h2 id="Linq1">1、Take - Simple</h2>
+<p>取前5个数据</p>
+<pre>
+    public void Linq1() 
+    { 
+        int[] numbers = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 }; 
+  
+        var first5Numbers = numbers.Take(3);   
+        Console.WriteLine("取前5个数据:"); 
+        foreach (var n in first5Numbers) 
+        { 
+            Console.WriteLine(n); 
+        } 
+    }
+</pre>
+<a href="/Linq/Partitioning1/">点击运行</a>
+<h3>运行结果：</h3>
+<div class="res">@ViewData["TakeSimple1"]</div>
+<!--Take - Nested(嵌套)-->
+<h2 id="Linq2">2、Take - Nested(嵌套)</h2>
+<p>取区域属于WA的前3个客户信息数据</p>
+<pre>
+    public void Linq2()
+    {
+        List&lt;Customer&gt; customers = GetCustomerList();
+
+        var first3WAOrders = (
+            from c in customers
+            from o in c.Orders
+            where c.Region == "WA"
+            select new { c.CustomerID, o.OrderID, o.OrderDate })
+            .Take(3);
+        Console.WriteLine("取区域属于WA的前3个客户信息数据:");
+        foreach (var order in first3WAOrders)
+        {
+            ObjectDumper.Write(order);
+        }
+    }
+</pre>
+<a href="/Linq/Partitioning2/">点击运行</a>
+<h3>运行结果：</h3>
+<div class="res">
+    @if (ViewData["TakeSimple2"] != null)
+     {
+        @Html.Raw("取区域属于WA的前3个客户信息数据：")
+         foreach (var p in ViewData["TakeSimple2"] as List<string>)
+        {
+            @Html.Raw("<br/>" + p.ToString())
+        }
+     }
+</div>
+<!--Skit - Simple-->
+<h2 id="Linq3">3、Skip - Simple</h2>
+<p>跳过前3数据获得后面的所有数据</p>
+<pre>
+    public void Linq3() 
+    { 
+        int[] numbers = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
+        var allButFirst4Numbers = numbers.Skip(3);
+        Console.WriteLine("跳过前3数据获得后面的所有数据:");
+        foreach (var n in allButFirst4Numbers)
+        { 
+            Console.WriteLine(n); 
+        } 
+    }
+</pre>
+<a href="/Linq/Partitioning3/">点击运行</a>
+<h3>运行结果：</h3>
+<div class="res">@ViewData["SkipSimple1"]</div>
+
+@Html.Raw("<script>goTo('" + ViewData["Anchor"] + "');</script>")
+
