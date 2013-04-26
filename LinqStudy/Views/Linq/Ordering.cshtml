@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Ordering";
+}
+<div id="nav">当前位置: Linq学习之旅 - Ordering</div>
+<!--Take - Simple 1-->
+<h2 id="Linq1">1、Take - Simple</h2>
+<p>对数组中元素进行排序</p>
+<pre>
+    public void Linq1()
+    {
+        string[] words = { "cherry", "apple", "blueberry" };
+ 
+        var sortedWords =
+            from w in words
+            orderby w
+            select w;
+ 
+        Console.WriteLine("对数组中元素进行排序：");
+        foreach (var w in sortedWords)
+        {
+            Console.WriteLine(w);
+        }
+    }
+</pre>
+<a href="/Linq/Ordering1/">点击运行</a>
+<h3>运行结果：</h3>
+<div class="res">@ViewData["OrderBySimple1"]</div>

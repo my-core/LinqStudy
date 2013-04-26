@@ -3,8 +3,9 @@ a:link, a:visited, a:active { text-decoration:none;}
 a:hover{ text-decoration:underline;}
 h1,h2,h3,h4,h5{margin:0px; padding:0px;}
 #top{ position:fixed; left:0px;top:0px; background:#fff;}
-#head{height:40px; font-size:30px; line-height:40px; border:1px solid #D8DFEA; margin:5px 10px;  padding:0px 24px; }
-#nav_menu { height:50px; line-height:25px; margin: 0px 10px;padding:0px; background: -moz-linear-gradient(center top , #2B6695, #0E4773) repeat scroll 0 0 #2B6695;box-shadow: -3px 1px 3px rgba(0, 0, 0, 0.25);}
+#head{background:url('/Content/image/logo.png') no-repeat 15px center;height:40px; font-size:22px; line-height:40px; border:1px solid #D8DFEA; margin:5px 10px;  padding:0px 24px 0px 56px; color:red; }
+#head #logo{ background:url('/Content/image/logo.png') no-repeat; width:32px; height:32px; display:block; }
+#nav_menu { height:50px; line-height:25px; margin: 0px 10px;padding:0px; background: -moz-linear-gradient(center top , #2B6695, #0E4773) repeat scroll 0 0 #2B6695;box-shadow: -3px 1px 3px rgba(0, 0, 0, 0.25); float:left;}
 #nav_menu a{font-size: 14px;padding-left: 24px; color:#fff;}
 #nav_menu  a:hover,#nav_menu a:visited,#nav_menu a:active {color: #fff;}
 #main{margin:115px 10px 5px 10px; border:1px solid #D8DFEA; padding:0px 24px;}
@@ -15,4 +16,4 @@ p{ line-height:20px;}
 pre{ background:#eee;}
 .res{ line-height:20px; background:#8EE5EE;}
 #toTop {display: none;position: fixed;bottom: 5px;right: 5px;width: 64px;height: 64px;background: url('/Content/image/up.png') no-repeat;opacity: 0.4;filter: alpha(opacity=40); /* For IE8 and earlier */}
-#toTop:hover {opacity: 0.8;filter: alpha(opacity=80); /* For IE8 and earlier */}
+#toTop:hover {opacity: 0.8;filter: alpha(opacity=80); /* For IE8 and earlier */} 

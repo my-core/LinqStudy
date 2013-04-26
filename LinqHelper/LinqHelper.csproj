@@ -43,7 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Grouping.cs" />
     <Compile Include="DataModel.cs" />
+    <Compile Include="Ordering.cs" />
     <Compile Include="Partitioning.cs" />
     <Compile Include="Projection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

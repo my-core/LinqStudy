@@ -143,10 +143,10 @@
      @if (ViewData["SelectSimple6"] != null)
      {
         @Html.Raw("对产品中的属性UnitPrice进行重名成Price：")
-   foreach (var p in ViewData["SelectSimple6"] as List<LinqHelper.Products>)
-   {
+       foreach (var p in ViewData["SelectSimple6"] as List<LinqHelper.Products>)
+       {
                 @Html.Raw("<br/>" + p.ProductName + " - " + p.Category + " - " + p.Price)
-   }
+        }
      }
 </div>
 <!--Select - Indexed-->
