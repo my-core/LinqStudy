@@ -64,6 +64,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\image\logo.png" />
     <Content Include="Content\image\up.png" />
     <Content Include="Content\js\anchor.js" />
     <Content Include="Content\js\jquery.scrollToTop.min.js" />
@@ -133,6 +134,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Linq\Partitioning.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Linq\Ordering.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

@@ -185,6 +185,107 @@ namespace LinqStudy.Controllers
             ViewData["Anchor"] = "Linq3";
             return View("Partitioning");
         }
+        public ActionResult Partitioning4()
+        {
+            ViewData["SkipSimple2"] = partitioning.Linq4();
+            ViewData["Anchor"] = "Linq4";
+            return View("Partitioning");
+        }
+        public ActionResult Partitioning5()
+        {
+            ViewData["TaleWhileSimple1"] = partitioning.Linq5();
+            ViewData["Anchor"] = "Linq5";
+            return View("Partitioning");
+        }
+        public ActionResult Partitioning6()
+        {
+            ViewData["TaleWhileSimple2"] = partitioning.Linq6();
+            ViewData["Anchor"] = "Linq6";
+            return View("Partitioning");
+        }
+        public ActionResult Partitioning7()
+        {
+            ViewData["SkipWhileSimple1"] = partitioning.Linq7();
+            ViewData["Anchor"] = "Linq7";
+            return View("Partitioning");
+        }
+        public ActionResult Partitioning8()
+        {
+            ViewData["SkipWhileSimple2"] = partitioning.Linq8();
+            ViewData["Anchor"] = "Linq8";
+            return View("Partitioning");
+        }
+        #endregion
+
+        #region Ordering--OrderBy/ThenBy/OrderByDescending/ThenByDescending语法
+        public Ordering _ordering;
+        public Ordering ordering
+        {
+            get
+            {
+                if (_ordering == null)
+                    _ordering = new Ordering();
+                return _ordering;
+            }
+        }
+        public ActionResult Ordering()
+        {
+            return View();
+        }
+        public ActionResult Ordering1()
+        {
+            ViewData["OrderBySimple1"] = ordering.Linq1();
+            ViewData["Anchor"] = "Linq1";
+            return View("Ordering");
+        }
+        public ActionResult Ordering2()
+        {
+            ViewData["OrderBySimple2"] = ordering.Linq2();
+            ViewData["Anchor"] = "Linq2";
+            return View("Ordering");
+        }
+        public ActionResult Ordering3()
+        {
+            ViewData["OrderBySimple3"] = ordering.Linq3();
+            ViewData["Anchor"] = "Linq3";
+            return View("Ordering");
+        }
+        public ActionResult Ordering4()
+        {
+            ViewData["OrderBySimple4"] = ordering.Linq4();
+            ViewData["Anchor"] = "Linq4";
+            return View("Ordering");
+        }
+        public ActionResult Ordering5()
+        {
+            ViewData["OrderByDescending1"] = ordering.Linq5();
+            ViewData["Anchor"] = "Linq5";
+            return View("Ordering");
+        }
+        public ActionResult Ordering6()
+        {
+            ViewData["OrderByDescending2"] = ordering.Linq6();
+            ViewData["Anchor"] = "Linq6";
+            return View("Ordering");
+        }
+        public ActionResult Ordering7()
+        {
+            ViewData["OrderByDescending3"] = ordering.Linq7();
+            ViewData["Anchor"] = "Linq7";
+            return View("Ordering");
+        }
+        public ActionResult Ordering8()
+        {
+            ViewData["ThenBy1"] = ordering.Linq8();
+            ViewData["Anchor"] = "Linq8";
+            return View("Ordering");
+        }
+        public ActionResult Ordering9()
+        {
+            ViewData["ThenBy2"] = ordering.Linq9();
+            ViewData["Anchor"] = "Linq9";
+            return View("Ordering");
+        }
         #endregion
 
     }

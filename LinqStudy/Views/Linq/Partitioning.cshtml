@@ -14,7 +14,7 @@
         Console.WriteLine("取前5个数据:"); 
         foreach (var n in first5Numbers) 
         { 
-            Console.WriteLine(n); 
+            Console.WriteLine(n);
         } 
     }
 </pre>
@@ -72,6 +72,112 @@
 <a href="/Linq/Partitioning3/">点击运行</a>
 <h3>运行结果：</h3>
 <div class="res">@ViewData["SkipSimple1"]</div>
+<!--Skip - Nested(嵌套)-->
+<h2 id="Linq4">4、Take - Nested(嵌套)</h2>
+<p>取区域属于WA的客户信息的数据，但不包含前三条</p>
+<pre>
+    public void Linq4()
+    {
+        List&lt;Customer&gt; customers = GetCustomerList();
+
+        var allButFirst3Orders = (
+            from c in customers
+            from o in c.Orders
+            where c.Region == "WA"
+            select new { c.CustomerID, o.OrderID, o.OrderDate })
+            .Skip(3);
+        Console.WriteLine("取区域属于WA的客户信息的数据，但不包含前三条:");
+        foreach (var order in allButFirst3Orders)
+        {
+            ObjectDumper.Write(order);
+        }
+    }
+</pre>
+<a href="/Linq/Partitioning4/">点击运行</a>
+<h3>运行结果：</h3>
+<div class="res">
+    @if (ViewData["SkipSimple2"] != null)
+     {
+        @Html.Raw("取区域属于WA的客户信息的数据，但不包含前三条：")
+         foreach (var p in ViewData["SkipSimple2"] as List<string>)
+        {
+            @Html.Raw("<br/>" + p.ToString())
+        }
+     }
+</div>
+<!--TakeWhile - Simple-->
+<h2 id="Linq5">5、TakeWhile - Simple</h2>
+<p>这个示例使用TakeWhile返回元素从数组的开始直到一个元素不小于6时停止：<br />也就是说执行到和9这个元素比较后,就结束比较了</p>
+<pre>
+    public void Linq5() 
+    { 
+       int[] numbers = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };   
+        var firstNumbersLessThan6 = numbers.TakeWhile(n => n < 6);   
+        Console.WriteLine("返回元素从数组的开始直到一个元素不小于6时停止："); 
+        foreach (var n in firstNumbersLessThan6) 
+        { 
+            Console.WriteLine(n); 
+        } 
+    }
+</pre>
+<a href="/Linq/Partitioning5/">点击运行</a>
+<h3>运行结果：</h3>
+<div class="res">@ViewData["TaleWhileSimple1"]</div>
+<!--TakeWhile - Indexed-->
+<h2 id="Linq6">6、TakeWhile - Indexed</h2>
+<p>这个示例使用TakeWhile返回元素从数组的开始直到元素的值小于元素的索引时停止：<br />也就是说执行到1这个元素时，元素的索引为2，不满足条件n>=index:(1>=2),就结束比较了</p>
+<pre>
+    public void Linq6() 
+    { 
+       int[] numbers = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };   
+        var firstSmallNumbers  = numbers.TakeWhile((n,index)=>n&lt;=index);   
+        Console.WriteLine("返回元素从数组的开始直到元素的值小于元素的索引时停止："); 
+        foreach (var n in firstSmallNumbers ) 
+        { 
+            Console.WriteLine(n); 
+        } 
+    }
+</pre>
+<a href="/Linq/Partitioning6/">点击运行</a>
+<h3>运行结果：</h3>
+<div class="res">@ViewData["TaleWhileSimple2"]</div>
+<!--SkipWhile - Simple-->
+<h2 id="Linq7">7、TakeWhile - Indexed</h2>
+<p>这个示例使用SkipWhile得到数组的元素从第一个元素可以被3整除开始获取：<br />也就是说执行到3这个元素时，元素可以被3整除,则开始获取元素（前面的5-4-1元素不能被3整除则跳过）</p>
+<pre>
+    public void Linq7() 
+    { 
+        int[] numbers = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
+        var allButFirst3Numbers = numbers.SkipWhile(n => n % 3 != 0);   
+        Console.WriteLine("All elements starting from first element divisible by 3:"); 
+        foreach (var n in allButFirst3Numbers) 
+        { 
+            Console.WriteLine(n); 
+        } 
+    }
+</pre>
+<a href="/Linq/Partitioning7/">点击运行</a>
+<h3>运行结果：</h3>
+<div class="res">@ViewData["SkipWhileSimple1"]</div>
+<!--TakeWhile - Indexed-->
+<h2 id="Linq8">8、SkipWhile - Indexed</h2>
+<p>这个示例使用TakeWhile返回元素从元素的值小于元素的索引时开始：<br />也就是说执行到1这个元素时，元素的索引为2，不满足条件n>=index:(1>=2),就开始住后获取数据</p>
+<pre>
+    public void Linq8() 
+    { 
+        int[] numbers = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };   
+        var laterNumbers = numbers.SkipWhile((n, index) => n >= index);   
+        Console.WriteLine("返回元素从元素的值小于元素的索引时开始:"); 
+        foreach (var n in laterNumbers) 
+        { 
+            Console.WriteLine(n); 
+        } 
+    }
+</pre>
+<a href="/Linq/Partitioning8/">点击运行</a>
+<h3>运行结果：</h3>
+<div class="res">@ViewData["SkipWhileSimple2"]</div>
+
 
 @Html.Raw("<script>goTo('" + ViewData["Anchor"] + "');</script>")
 
