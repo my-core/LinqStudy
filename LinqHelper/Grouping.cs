@@ -67,15 +67,19 @@ namespace LinqHelper
             foreach (var g in orderGroups)
             {
                 StringBuilder sb = new StringBuilder();
-                sb.AppendFormat("分类为{0}的产品有：", g.Category);
+                sb.AppendFormat("分类为{0}的产品有：<br/>", g.Category);
                 foreach (var p in g.Products)
                 {
                     sb.Append(p.ProductName + "  ");
                 }
+                list.Add(sb.ToString());
             }
             return list;
         }
-
+        /// <summary>
+        /// 对产品按公司名、年、月进行分组
+        /// </summary>
+        /// <returns></returns>
         public object Linq4()
         {
             List<Customer> customers = data.GetCustomerList();
@@ -119,49 +123,47 @@ namespace LinqHelper
             }
             return list;
         }
-
+        /// <summary>
+        /// 对数据中包含有相同字母的元素进行分组
+        /// </summary>
+        /// <returns></returns>
         public object Linq5()
         {
             StringBuilder sb = new StringBuilder();
             string[] anagrams = { "from   ", " salt", " earn ", "  last   ", " near ", " form  " };
-            var orderGroups = anagrams.GroupBy(
-                        w => w.Trim(),
-                        a => a.ToUpper(),
-                        new AnagramEqualityComparer()
-                        );
+            var orderGroups = anagrams.GroupBy(w => w.Trim(), new AnagramEqualityComparer());
             foreach (var o in orderGroups)
             {
-                sb.Append("--" + o.Key + "<br/>");
                 foreach (var g in o)
                 {
-                    foreach (var gg in g)
-                    {
-                        sb.Append("----" + gg + "<br/>");
-                    }
+                    sb.Append(g+" ");
                 }
+                sb.Append("<br/>");
             }
             return sb.ToString();
         }
-
+        /// <summary>
+        /// 对数据中包含有相同字母的元素进行分组,并对元素转换成大写
+        /// </summary>
+        /// <returns></returns>
         public object Linq6()
         {
-            throw new NotImplementedException();
-        }
-
-        public object Linq7()
-        {
-            throw new NotImplementedException();
-        }
-
-        public object Linq8()
-        {
-            throw new NotImplementedException();
-        }
-
-        public object Linq9()
-        {
-            throw new NotImplementedException();
-        }
+            StringBuilder sb = new StringBuilder();
+            string[] anagrams = { "from   ", " salt", " earn ", "  last   ", " near ", " form  " };
+            var orderGroups = anagrams.GroupBy(
+                w => w.Trim(), 
+                w=>w.ToUpper(),
+                new AnagramEqualityComparer());
+            foreach (var o in orderGroups)
+            {
+                foreach (var g in o)
+                {
+                    sb.Append(g + " ");
+                }
+                sb.Append("<br/>");
+            }
+            return sb.ToString();
+        }       
         public class AnagramEqualityComparer : IEqualityComparer<string>
         {
             public bool Equals(string x, string y)

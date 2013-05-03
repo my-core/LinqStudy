@@ -286,8 +286,21 @@ namespace LinqStudy.Controllers
             ViewData["Anchor"] = "Linq9";
             return View("Ordering");
         }
+        public ActionResult Ordering10()
+        {
+            ViewData["ThenByDescending1"] = ordering.Linq10();
+            ViewData["Anchor"] = "Linq10";
+            return View("Ordering");
+        }
+        public ActionResult Ordering11()
+        {
+            ViewData["ThenByDescending2"] = ordering.Linq11();
+            ViewData["Anchor"] = "Linq11";
+            return View("Ordering");
+        }
         #endregion
 
+        #region Grouping--GroupBy语法
         public Grouping _grouping;
         public Grouping grouping
         {
@@ -326,8 +339,161 @@ namespace LinqStudy.Controllers
             ViewData["Anchor"] = "Linq4";
             return View("Grouping");
         }
+        public ActionResult Grouping5()
+        {
+            ViewData["GroupingSample5"] = grouping.Linq5();
+            ViewData["Anchor"] = "Linq5";
+            return View("Grouping");
+        }
+        public ActionResult Grouping6()
+        {
+            ViewData["GroupingSample6"] = grouping.Linq6();
+            ViewData["Anchor"] = "Linq6";
+            return View("Grouping");
+        }
+        #endregion
 
+        #region Set--Distinct/Union/Intersect/Except语法
+        public Set _set;
+        public Set set
+        {
+            get
+            {
+                if (_set == null)
+                    _set = new Set();
+                return _set;
+            }
+        }
+        public ActionResult Set()
+        {
+            return View();
+        }
+        public ActionResult Set1()
+        {
+            ViewData["DistinctSample1"] = set.Linq1();
+            ViewData["Anchor"] = "Linq1";
+            return View("Set");
+        }
+        public ActionResult Set2()
+        {
+            ViewData["DistinctSample2"] = set.Linq2();
+            ViewData["Anchor"] = "Linq2";
+            return View("Set");
+        }
+        public ActionResult Set3()
+        {
+            ViewData["UnionSample1"] = set.Linq3();
+            ViewData["Anchor"] = "Linq3";
+            return View("Set");
+        }
+        public ActionResult Set4()
+        {
+            ViewData["UnionSample2"] = set.Linq4();
+            ViewData["Anchor"] = "Linq4";
+            return View("Set");
+        }
+        public ActionResult Set5()
+        {
+            ViewData["IntersectSample1"] = set.Linq5();
+            ViewData["Anchor"] = "Linq5";
+            return View("Set");
+        }
+        public ActionResult Set6()
+        {
+            ViewData["IntersectSample2"] = set.Linq6();
+            ViewData["Anchor"] = "Linq6";
+            return View("Set");
+        }
 
+        #endregion
+
+        #region Set--ToArray/ToList/ToDictionary/OfType语法
+        public Conversion _conversion;
+        public Conversion conversion
+        {
+            get
+            {
+                if (_conversion == null)
+                    _conversion = new Conversion();
+                return _conversion;
+            }
+        }
+        public ActionResult Conversion()
+        {
+            return View();
+        }
+        public ActionResult Conversion1()
+        {
+            ViewData["ConversionSample1"] = conversion.Linq1();
+            ViewData["Anchor"] = "Linq1";
+            return View("Conversion");
+        }
+        public ActionResult Conversion2()
+        {
+            ViewData["ConversionSample2"] = conversion.Linq2();
+            ViewData["Anchor"] = "Linq2";
+            return View("Conversion");
+        }
+        public ActionResult Conversion3()
+        {
+            ViewData["ConversionSample3"] = conversion.Linq3();
+            ViewData["Anchor"] = "Linq3";
+            return View("Conversion");
+        }
+        public ActionResult Conversion4()
+        {
+            ViewData["ConversionSample4"] = conversion.Linq4();
+            ViewData["Anchor"] = "Linq4";
+            return View("Conversion");
+        }
+        #endregion
+
+        #region Set--ToArray/ToList/ToDictionary/OfType语法
+        public Element _element;
+        public Element element
+        {
+            get
+            {
+                if (_element == null)
+                    _element = new Element();
+                return _element;
+            }
+        }
+        public ActionResult Element()
+        {
+            return View();
+        }
+        public ActionResult Element1()
+        {
+            ViewData["ElementSample1"] = element.Linq1();
+            ViewData["Anchor"] = "Linq1";
+            return View("Element");
+        }
+        public ActionResult Element2()
+        {
+            ViewData["ElementSample2"] = element.Linq2();
+            ViewData["Anchor"] = "Linq2";
+            return View("Element");
+        }
+        public ActionResult Element3()
+        {
+            ViewData["ElementSample3"] = element.Linq3();
+            ViewData["Anchor"] = "Linq3";
+            return View("Element");
+        }
+        public ActionResult Element4()
+        {
+            ViewData["ElementSample4"] = element.Linq4();
+            ViewData["Anchor"] = "Linq4";
+            return View("Element");
+        }
+        public ActionResult Element5()
+        {
+            ViewData["ElementSample5"] = element.Linq5();
+            ViewData["Anchor"] = "Linq5";
+            return View("Element");
+        }
+        #endregion
 
     }
 }

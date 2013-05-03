@@ -1,0 +1,154 @@
+﻿@{
+    ViewBag.Title = "Set";
+}
+<div id="nav">当前位置: Linq学习之旅 - Set</div>
+<!--Distinct - Simple 1-->
+<h2 id="Linq1">1、Distinct - Simple 1</h2>
+<p>将数组中重复的元素过滤掉</p>
+<pre>
+    public void Linq1()
+    {
+        int[] filterArr = { 2, 2, 3, 5, 5 };
+ 
+        var filter = filterArr.Distinct();
+ 
+        Console.WriteLine("将数组中重复的元素过滤掉:");
+        foreach (var f in filter)
+        {
+            Console.WriteLine(f);
+        }
+    }
+</pre>
+<a href="/Linq/Set1/">点击运行</a>
+<h3>运行结果：</h3>
+<div class="res">@ViewData["DistinctSample1"]</div>
+
+<!--Distinct - Simple 2-->
+<h2 id="Linq2">2、Distinct - Simple 2</h2>
+<p>这个示例使用Distinct过滤出产品列表中唯一的类别名</p>
+<pre>
+    public void Linq2()
+    {
+        List&lt;Product&gt; products = GetProductList(); 
+        var categoryNames = (
+            from p in products
+            select p.Category)
+            .Distinct(); 
+        Console.WriteLine("Category names:");
+        foreach (var n in categoryNames)
+        {
+            Console.WriteLine(n);
+        }
+    }
+</pre>
+<a href="/Linq/Set2/">点击运行</a>
+<h3>运行结果：</h3>
+<div class="res">@ViewData["DistinctSample2"]</div>
+
+<!--Union - Simple 1-->
+<h2 id="Linq3">3、Union - Simple 1</h2>
+<p>这个示例使用Union获取包含来自两个数组的值的集合</p>
+<pre>
+    public void Linq3()
+    {
+        int[] numbersA = { 0, 2, 4, 5, 6, 8, 9 };
+        int[] numbersB = { 1, 3, 5, 7, 8 };
+ 
+        var uniqueNumbers = numbersA.Union(numbersB);
+ 
+        Console.WriteLine("Unique numbers from both arrays:");
+        foreach (var n in uniqueNumbers)
+        {
+            Console.WriteLine(n);
+        }
+    }
+</pre>
+<a href="/Linq/Set3/">点击运行</a>
+<h3>运行结果：</h3>
+<div class="res">@ViewData["UnionSample1"]</div>
+
+<!--Union - Simple 2-->
+<h2 id="Linq4">4、Union - Simple 2</h2>
+<p>这个示例使用Union获取包含来自产品和客户名称的第一个字母的集合</p>
+<pre>
+    public void Linq3()
+    {
+        List&lt;Product&gt; products = GetProductList();
+        List&lt;Customer&gt; customers = GetCustomerList(); 
+        var productFirstChars =
+            from p in products
+            select p.ProductName[0];
+        var customerFirstChars =
+            from c in customers
+            select c.CompanyName[0];
+        var uniqueFirstChars = productFirstChars.Union(customerFirstChars); 
+        Console.WriteLine("Unique first letters from Product names and Customer names:");
+        foreach (var ch in uniqueFirstChars)
+        {
+            Console.WriteLine(ch);
+        }
+    }
+</pre>
+<a href="/Linq/Set4/">点击运行</a>
+<h3>运行结果：</h3>
+<div class="res">
+@if (ViewData["UnionSample2"] != null)
+{
+    @Html.Raw(ViewData["UnionSample2"].ToString());
+}
+</div>
+
+<!--Intersect - Simple 1-->
+<h2 id="Linq5">5、Intersect - Simple 1</h2>
+<p>这个示例使用Intersect获取包含了两个数组共有元素的集合</p>
+<pre>
+    public void Linq5()
+    {
+        int[] numbersA = { 0, 2, 4, 5, 6, 8, 9 };
+        int[] numbersB = { 1, 3, 5, 7, 8 };
+ 
+        var commonNumbers = numbersA.Intersect(numbersB);
+ 
+        Console.WriteLine("Common numbers shared by both arrays:");
+        foreach (var n in commonNumbers)
+        {
+            Console.WriteLine(n);
+        }
+    }
+</pre>
+<a href="/Linq/Set5/">点击运行</a>
+<h3>运行结果：</h3>
+<div class="res">@ViewData["IntersectSample1"]</div>
+
+<!--Intersect - Simple 2-->
+<h2 id="Linq6">6、Intersect - Simple 2</h2>
+<p>这个示例使用Intersect获取产品和客户名称的第一个字母集合中拥有相同元素的集合</p>
+<pre>
+    public void Linq6()
+    {
+        List&lt;Product&gt; products = GetProductList();
+        List&lt;Customer&gt; customers = GetCustomerList(); 
+        var productFirstChars =
+            from p in products
+            select p.ProductName[0];
+        var customerFirstChars =
+            from c in customers
+            select c.CompanyName[0];
+        var uniqueFirstChars = productFirstChars.Intersect(customerFirstChars); 
+        Console.WriteLine("Unique first letters from Product names and Customer names:");
+        foreach (var ch in uniqueFirstChars)
+        {
+            Console.WriteLine(ch);
+        }
+    }
+</pre>
+<a href="/Linq/Set6/">点击运行</a>
+<h3>运行结果：</h3>
+<div class="res">
+@if (ViewData["IntersectSample2"] != null)
+{
+    @Html.Raw(ViewData["IntersectSample2"].ToString());
+}
+</div>
+
+@Html.Raw("<script>goTo('" + ViewData["Anchor"] + "');</script>")

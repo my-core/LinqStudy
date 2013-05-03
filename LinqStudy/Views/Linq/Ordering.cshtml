@@ -2,8 +2,8 @@
     ViewBag.Title = "Ordering";
 }
 <div id="nav">当前位置: Linq学习之旅 - Ordering</div>
-<!--Take - Simple 1-->
-<h2 id="Linq1">1、Take - Simple</h2>
+<!--================OrderBy - Simple 1===================-->
+<h2 id="Linq1">1、OrderBy - Simple</h2>
 <p>对数组中元素进行排序</p>
 <pre>
     public void Linq1()
@@ -25,3 +25,242 @@
 <a href="/Linq/Ordering1/">点击运行</a>
 <h3>运行结果：</h3>
 <div class="res">@ViewData["OrderBySimple1"]</div>
+
+<!--================OrderBy - Simple 2====================-->
+<h2 id="Linq2">2、OrderBy - Simple2</h2>
+<p>对数组中元素按元素长度进行升序排序</p>
+<pre>
+    public void Linq2()
+    {
+        string[] words = { "cherry", "apple", "blueberry" }; 
+        var sortedWords =
+            from w in words
+            orderby w.Length
+            select w;
+ 
+        Console.WriteLine("对数组中元素按元素长度进行升序排序:");
+        foreach (var w in sortedWords)
+        {
+            Console.WriteLine(w);
+        }
+    }
+</pre>
+<a href="/Linq/Ordering2/">点击运行</a>
+<h3>运行结果：</h3>
+<div class="res">@ViewData["OrderBySimple2"]</div>
+
+<!--================OrderBy - Simple 3==================-->
+<h2 id="Linq3">3、OrderBy - Simple 3</h2>
+<p>按产品名对产品列表进行升序排序</p>
+<pre>
+    public void Linq2()
+    {
+         List&lt;Product&gt; products = GetProductList();
+ 
+        var sortedProducts =
+        from p in products
+        orderby p.ProductName
+        select p;
+ 
+        ObjectDumper.Write(sortedProducts);
+    }
+</pre>
+<a href="/Linq/Ordering3/">点击运行</a>
+<h3>运行结果：</h3>
+<div class="res">
+@if (ViewData["OrderBySimple3"] != null)
+{
+    @Html.Raw("按产品名对产品列表进行升序排序:<br/>");
+    foreach (var p in ViewData["OrderBySimple3"] as List<string>)
+    {
+        @Html.Raw(p + "<br/>");
+    } 
+}
+</div>
+<!--================OrderBy - Comparer==================-->
+<h2 id="Linq4">4、OrderBy - Simple 4</h2>
+<p>使用比较器进行升排序</p>
+<pre>
+    public void Linq4()
+    {
+        string[] words = { "aPPLE", "AbAcUs", "bRaNcH", "BlUeBeRrY", "ClOvEr", "cHeRry" };
+        var sortedWords = words.OrderBy(a => a, new CaseInsensitiveComparer());
+        ObjectDumper.Write(sortedWords);
+    }
+</pre>
+<a href="/Linq/Ordering4/">点击运行</a>
+<h3>运行结果：</h3>
+<div class="res">@ViewData["OrderBySimple4"]</div>
+
+<!--================OrderByDescending - Simple 1==================-->
+<h2 id="Linq5">5、OrderByDescending - Simple 1</h2>
+<p>对数组里的数据进行降序排序</p>
+<pre>
+    public void Linq5()
+    {
+        double[] doubles = { 1.7, 2.3, 1.9, 4.1, 2.9 };
+        var sortedDoubles =
+            from d in doubles
+            orderby d descending
+            select d;
+        Console.WriteLine("The doubles from highest to lowest:");
+        foreach (var d in sortedDoubles)
+        {
+            Console.WriteLine(d);
+        }
+    }
+</pre>
+<a href="/Linq/Ordering5/">点击运行</a>
+<h3>运行结果：</h3>
+<div class="res">@ViewData["OrderByDescending1"]</div>
+
+<!--================OrderByDescending - Simple 2==================-->
+<h2 id="Linq6">6、OrderByDescending - Simple 2</h2>
+<p>按产品库存大小进行降序排序</p>
+<pre>
+    public void Linq6()
+    {
+         List&lt;Product&gt; products = GetProductList();
+ 
+        var sortedProducts =
+        from p in products
+        orderby p.UnitsInStock descending
+        select p;
+ 
+        ObjectDumper.Write(sortedProducts);
+    }
+</pre>
+<a href="/Linq/Ordering6/">点击运行</a>
+<h3>运行结果：</h3>
+<div class="res">
+@if (ViewData["OrderByDescending2"] != null)
+{
+    @Html.Raw("按产品库存大小进行降序排序:<br/>");
+    foreach (var p in ViewData["OrderByDescending2"] as List<string>)
+    {
+        @Html.Raw(p + "<br/>");
+    } 
+}
+</div>
+
+<!--================OrderByDescending - Comparer==================-->
+<h2 id="Linq7">7、OrderByDescending - Comparer</h2>
+<p>使用比较器进行降序排序</p>
+<pre>
+    public void Linq7()
+    {
+        string[] words = { "aPPLE", "AbAcUs", "bRaNcH", "BlUeBeRrY", "ClOvEr", "cHeRry" };
+        var sortedWords = words.OrderByDescending(a => a, new CaseInsensitiveComparer());
+        ObjectDumper.Write(sortedWords);
+    }
+    public class CaseInsensitiveComparer : IComparer&lt;string&gt;
+    {
+        public int Compare(string x, string y)
+        {
+            return string.Compare(x, y, StringComparison.OrdinalIgnoreCase);
+        }
+    }
+</pre>
+<a href="/Linq/Ordering7/">点击运行</a>
+<h3>运行结果：</h3>
+<div class="res">@ViewData["OrderByDescending3"]</div>
+
+<!--================ThenBy - Simple==================-->
+<h2 id="Linq8">8、ThenBy - Simple</h2>
+<p>使用ThenBy对数组按两个条件进行排序</p>
+<pre>
+    public void Linq35()
+    {
+        string[] digits = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" }; 
+        var sortedDigits =
+            from d in digits
+            orderby d.Length, d
+            select d; 
+        <span style="color:Green">//var sortedDigits = digits.OrderBy(d => d.Length).ThenBy(d => d);</span>
+        Console.WriteLine("使用ThenBy对数组按两个条件进行排序:");
+        foreach (var d in sortedDigits)
+        {
+            Console.WriteLine(d);
+        }
+    }
+</pre>
+<a href="/Linq/Ordering8/">点击运行</a>
+<h3>运行结果：</h3>
+<div class="res">@ViewData["ThenBy1"]</div>
+
+<!--================ThenBy - Comparer==================-->
+<h2 id="Linq9">9、ThenBy - Comparer</h2>
+<p>使用ThenBy配合比较器对数组按两个条件进行排序</p>
+<pre>
+    public void Linq35()
+    {
+        string[] words = { "aPPLE", "AbAcUs", "bRaNcH", "BlUeBeRrY", "ClOvEr", "cHeRry" };
+        var sortedWords =words.OrderBy(w => w.Length).ThenBy(w => w,new CaseInsensitiveComparer());
+        Console.WriteLine("使用ThenBy配合比较器对数组按两个条件进行排序:");
+        foreach (var w in sortedWords)
+        {
+            Console.WriteLine(w);
+        }
+    }
+</pre>
+<a href="/Linq/Ordering8/">点击运行</a>
+<h3>运行结果：</h3>
+<div class="res">@ViewData["ThenBy1"]</div>
+
+<!--================ThenByDescending - Simple==================-->
+<h2 id="Linq10">10、ThenByDescending - Simple</h2>
+<p>对产品按Category升序，UnitPrice降序排序</p>
+<pre>
+    public void Linq10()
+    {
+        List&lt;Product&gt; products = GetProductList();
+ 
+        var sortedProducts =
+            from p in products
+            orderby p.Category, p.UnitPrice descending
+            select p;
+        <span style="color:Green">//var sortedP = product.OrderBy(p => p.Category).ThenByDescending(p => p.UnitPrice);</span>
+        ObjectDumper.Write(sortedProducts);
+    }
+</pre>
+<a href="/Linq/Ordering10/">点击运行</a>
+<h3>运行结果：</h3>
+<div class="res">
+@if (ViewData["ThenByDescending1"] != null)
+{
+    @Html.Raw("按产品分类升序、产品价格降序进行排序:<br/>");
+    foreach (var p in ViewData["ThenByDescending1"] as List<string>)
+    {
+        @Html.Raw(p + "<br/>");
+    } 
+}
+</div>
+
+<!--================ThenByDescending - Comparer==================-->
+<h2 id="Linq11">11、ThenByDescending - Comparer</h2>
+<p>使用ThenByDescending配合比较器对数组按长度升序、按字母降序进行排序</p>
+<pre>
+    public void Linq38()
+    {
+        string[] words = { "aPPLE", "AbAcUs", "bRaNcH", "BlUeBeRrY", "ClOvEr", "cHeRry" };
+ 
+        var sortedWords =
+            words.OrderBy(a => a.Length)
+                 .ThenByDescending(a => a, new CaseInsensitiveComparer());
+ 
+        ObjectDumper.Write(sortedWords);
+    }
+ 
+    public class CaseInsensitiveComparer : IComparer&lt;string&gt;
+    {
+        public int Compare(string x, string y)
+        {
+            return string.Compare(x, y, StringComparison.OrdinalIgnoreCase);
+        }
+    }
+</pre>
+<a href="/Linq/Ordering11/">点击运行</a>
+<h3>运行结果：</h3>
+<div class="res">@ViewData["ThenByDescending2"]</div>
+
+@Html.Raw("<script>goTo('" + ViewData["Anchor"] + "');</script>")

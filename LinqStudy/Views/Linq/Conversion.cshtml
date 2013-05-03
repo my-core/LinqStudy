@@ -1,0 +1,95 @@
+﻿@{
+    ViewBag.Title = "Conversion";
+}
+<div id="nav">当前位置: Linq学习之旅 - Conversion</div>
+<!--ToArray - Simple-->
+<h2 id="Linq1">1、ToArray - Simple</h2>
+<p>返回含有查询赋值的结果的Array 数组</p>
+<pre>
+    public void Linq1()
+    {
+        double[] doubles = { 1.7, 2.3, 1.9, 4.1, 2.9 }; 
+        var sortedDoubles =
+            from d in doubles
+            orderby d descending
+            select d;
+        var doublesArray = sortedDoubles.ToArray(); 
+        Console.WriteLine("Every other double from highest to lowest:");
+        for (int d = 0; d < doublesArray.Length; d++)
+        {
+            Console.WriteLine(doublesArray[d]);
+        }
+    }
+</pre>
+<a href="/Linq/Conversion1/">点击运行</a>
+<h3>运行结果：</h3>
+<div class="res">@ViewData["ConversionSample1"]</div>
+
+<!--ToList - Simple-->
+<h2 id="Linq2">2、ToList - Simple</h2>
+<p>返回含有查询赋值的结果的 List &lt;T&gt; 数组</p>
+<pre>
+    public void Linq2()
+    {
+        string[] words = { "cherry", "apple", "blueberry" };
+        var sortedWords =
+            from w in words
+            orderby w
+            select w;
+        var wordList = sortedWords.ToList();
+        Console.WriteLine("The sorted word list:");
+        foreach (var w in wordList)
+        {
+            Console.WriteLine(w);
+        }
+    }
+</pre>
+<a href="/Linq/Conversion2/">点击运行</a>
+<h3>运行结果：</h3>
+<div class="res">@ViewData["ConversionSample2"]</div>
+
+<!--ToDictionary - Simple-->
+<h2 id="Linq3">3、ToDictionary - Simple</h2>
+<p>将数据集合转换为Dictionary&lt;Name&gt;的键-值集合</p>
+<pre>
+    public void Linq3()
+    {
+        var scoreRecords = new[] 
+        { 
+            new {Name = "Alice", Score = 50},
+            new {Name = "Bob"  , Score = 40},
+            new {Name = "Cathy", Score = 45}
+        };
+        var scoreRecordsDict = scoreRecords.ToDictionary(sr => sr.Name);
+        Console.WriteLine("Bob's score: {0}", scoreRecordsDict["Bob"]);
+    }
+</pre>
+<a href="/Linq/Conversion3/">点击运行</a>
+<h3>运行结果：</h3>
+<div class="res">@ViewData["ConversionSample3"]</div>
+
+<!--OfType - Simple-->
+<h2 id="Linq4">4、OfType - Simple</h2>
+<p>执行OfType&lt;T&gt;方法将返回集合中强制转换类型成功的所有元素</p>
+<pre>
+    public void Linq4()
+    {
+        object[] numbers = { null, 1.0, "two", 3, "four", 5, "six", 7.0 }; 
+        var doubles = numbers.OfType&lt;double&gt;(); 
+        Console.WriteLine("Numbers stored as doubles:");
+        foreach (var d in doubles)
+        {
+            Console.WriteLine(d);
+        }
+    }
+</pre>
+<a href="/Linq/Conversion4/">点击运行</a>
+<h3>运行结果：</h3>
+<div class="res">
+@if (ViewData["ConversionSample4"] != null)
+{
+    @Html.Raw(ViewData["ConversionSample4"].ToString());
+}
+</div>
+
+@Html.Raw("<script>goTo('" + ViewData["Anchor"] + "');</script>")

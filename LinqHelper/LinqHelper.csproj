@@ -43,6 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Conversion .cs" />
+    <Compile Include="Element.cs" />
     <Compile Include="Grouping.cs" />
     <Compile Include="DataModel.cs" />
     <Compile Include="Ordering.cs" />
@@ -50,6 +52,7 @@
     <Compile Include="Projection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Restriction.cs" />
+    <Compile Include="Set.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
