@@ -122,7 +122,25 @@ namespace LinqHelper
 
         public object Linq5()
         {
-            throw new NotImplementedException();
+            StringBuilder sb = new StringBuilder();
+            string[] anagrams = { "from   ", " salt", " earn ", "  last   ", " near ", " form  " };
+            var orderGroups = anagrams.GroupBy(
+                        w => w.Trim(),
+                        a => a.ToUpper(),
+                        new AnagramEqualityComparer()
+                        );
+            foreach (var o in orderGroups)
+            {
+                sb.Append("--" + o.Key + "<br/>");
+                foreach (var g in o)
+                {
+                    foreach (var gg in g)
+                    {
+                        sb.Append("----" + gg + "<br/>");
+                    }
+                }
+            }
+            return sb.ToString();
         }
 
         public object Linq6()
@@ -143,6 +161,23 @@ namespace LinqHelper
         public object Linq9()
         {
             throw new NotImplementedException();
+        }
+        public class AnagramEqualityComparer : IEqualityComparer<string>
+        {
+            public bool Equals(string x, string y)
+            {
+                return getCanonicalString(x) == getCanonicalString(y);
+            }
+            public int GetHashCode(string obj)
+            {
+                return getCanonicalString(obj).GetHashCode();
+            }
+            private string getCanonicalString(string word)
+            {
+                char[] wordChars = word.ToCharArray();
+                Array.Sort<char>(wordChars);
+                return new string(wordChars);
+            }
         }
     }
 }

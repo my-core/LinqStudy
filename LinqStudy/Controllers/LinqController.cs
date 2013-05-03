@@ -302,6 +302,24 @@ namespace LinqStudy.Controllers
         {
             return View();
         }
+        public ActionResult Grouping1()
+        {
+            ViewData["GroupingSample1"] = grouping.Linq1();
+            ViewData["Anchor"] = "Linq1";
+            return View("Grouping");
+        }
+        public ActionResult Grouping2()
+        {
+            ViewData["GroupingSample2"] = grouping.Linq2();
+            ViewData["Anchor"] = "Linq2";
+            return View("Grouping");
+        }
+        public ActionResult Grouping3()
+        {
+            ViewData["GroupingSample3"] = grouping.Linq3();
+            ViewData["Anchor"] = "Linq3";
+            return View("Grouping");
+        }
         public ActionResult Grouping4()
         {
             ViewData["GroupingSample4"] = grouping.Linq4();

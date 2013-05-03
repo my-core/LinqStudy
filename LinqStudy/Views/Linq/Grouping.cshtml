@@ -3,11 +3,81 @@
 }
 
 <div id="nav">当前位置: Linq学习之旅 - Grouping</div>
+<!--GroupBy - Simple 1-->
+<h2 id="Linq1">1、GroupBy - Simple 1</h2>
+<p>按数组元素除5的余数进行分组</p>
+<pre>
+    public void Linq4()
+    {
+        int[] numbers = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
+     
+        var numberGroups =
+            from n in numbers
+            group n by n % 5 into g
+            select new { Remainder = g.Key, Numbers = g };
+     
+        foreach (var g in numberGroups)
+        {
+            Console.WriteLine("除以5余数为{0}的元素有:", g.Remainder);
+            foreach (var n in g.Numbers)
+            {
+                Console.WriteLine(n);
+            }
+        }
+    }
+</pre>
+<a href="/Linq/Grouping1/">点击运行</a>
+<h3>运行结果：</h3>
+<div class="res">
+@if (ViewData["GroupingSample1"] != null)
+{
+    foreach (string s in ViewData["GroupingSample1"] as List<string>)
+    {
+        @Html.Raw(s + "<br/>");
+    }
+}
+</div>
+
+<!--GroupBy - Simple 2-->
+<h2 id="Linq2">2、GroupBy - Simple 2</h2>
+<p>按数组元素的首字母进行分组</p>
+<pre>
+    public void Linq2()
+    {
+        int[] numbers = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
+     
+        var numberGroups =
+            from n in numbers
+            group n by n % 5 into g
+            select new { Remainder = g.Key, Numbers = g };
+     
+        foreach (var g in numberGroups)
+        {
+            Console.WriteLine("首字母为{0}的元素有:", g.Remainder);
+            foreach (var n in g.Numbers)
+            {
+                Console.WriteLine(n);
+            }
+        }
+    }
+</pre>
+<a href="/Linq/Grouping2/">点击运行</a>
+<h3>运行结果：</h3>
+<div class="res">
+@if (ViewData["GroupingSample2"] != null)
+{
+    foreach (string s in ViewData["GroupingSample2"] as List<string>)
+    {
+        @Html.Raw(s + "<br/>");
+    }
+}
+</div>
+
 <!--GroupBy - Simple 4-->
-<h2 id="Linq1">4、GroupBy - Nested 4</h2>
+<h2 id="Linq4">4、GroupBy - Nested 4</h2>
 <p>对每一项元素加1</p>
 <pre>
-    public void Linq1()
+    public void Linq4()
     {
         int[] numbers = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
      
@@ -44,4 +114,4 @@
         }
      }
 </div>
-
+@Html.Raw("<script>goTo('" + ViewData["Anchor"] + "');</script>")
