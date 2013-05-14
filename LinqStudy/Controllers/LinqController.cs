@@ -407,7 +407,7 @@ namespace LinqStudy.Controllers
 
         #endregion
 
-        #region Set--ToArray/ToList/ToDictionary/OfType语法
+        #region Conversion--ToArray/ToList/ToDictionary/OfType语法
         public Conversion _conversion;
         public Conversion conversion
         {
@@ -448,7 +448,7 @@ namespace LinqStudy.Controllers
         }
         #endregion
 
-        #region Set--ToArray/ToList/ToDictionary/OfType语法
+        #region Element--First/FirstOrDefault/ElementAt语法
         public Element _element;
         public Element element
         {
@@ -495,5 +495,242 @@ namespace LinqStudy.Controllers
         }
         #endregion
 
+        #region Generation--Range/Repeat语法
+        public Generation _generation;
+        public Generation generation
+        {
+            get
+            {
+                if (_generation == null)
+                    _generation = new Generation();
+                return _generation;
+            }
+        }
+        public ActionResult Generation()
+        {
+            return View();
+        }
+        public ActionResult Generation1()
+        {
+            ViewData["GenerationSample1"] = generation.Linq1();
+            ViewData["Anchor"] = "Linq1";
+            return View("Generation");
+        }
+        public ActionResult Generation2()
+        {
+            ViewData["GenerationSample2"] = generation.Linq2();
+            ViewData["Anchor"] = "Linq2";
+            return View("Generation");
+        }       
+        #endregion
+
+        #region Quantifiers--Any/All语法
+        public Quantifiers _quantifiers;
+        public Quantifiers quantifiers
+        {
+            get
+            {
+                if (_quantifiers == null)
+                    _quantifiers = new Quantifiers();
+                return _quantifiers;
+            }
+        }
+        public ActionResult Quantifiers()
+        {
+            return View();
+        }
+        public ActionResult Quantifiers1()
+        {
+            ViewData["QuantifiersSample1"] = quantifiers.Linq1();
+            ViewData["Anchor"] = "Linq1";
+            return View("Quantifiers");
+        }
+        public ActionResult Quantifiers2()
+        {
+            ViewData["QuantifiersSample2"] = quantifiers.Linq2();
+            ViewData["Anchor"] = "Linq2";
+            return View("Quantifiers");
+        }
+        #endregion
+
+        #region Aggregate--Count/Sum/Min/Max/Average/Aggregate/语法
+        public Aggregate _aggregate;
+        public Aggregate aggregate
+        {
+            get
+            {
+                if (_aggregate == null)
+                    _aggregate = new Aggregate();
+                return _aggregate;
+            }
+        }
+        public ActionResult Aggregate()
+        {
+            return View();
+        }
+        public ActionResult Aggregate1()
+        {
+            ViewData["AggregateSample1"] = aggregate.Linq1();
+            ViewData["Anchor"] = "Linq1";
+            return View("Aggregate");
+        }
+        public ActionResult Aggregate2()
+        {
+            ViewData["AggregateSample2"] = aggregate.Linq2();
+            ViewData["Anchor"] = "Linq2";
+            return View("Aggregate");
+        }
+        public ActionResult Aggregate3()
+        {
+            ViewData["AggregateSample3"] = aggregate.Linq3();
+            ViewData["Anchor"] = "Linq3";
+            return View("Aggregate");
+        }
+        public ActionResult Aggregate4()
+        {
+            ViewData["AggregateSample4"] = aggregate.Linq4();
+            ViewData["Anchor"] = "Linq4";
+            return View("Aggregate");
+        }
+        public ActionResult Aggregate5()
+        {
+            ViewData["AggregateSample5"] = aggregate.Linq5();
+            ViewData["Anchor"] = "Linq5";
+            return View("Aggregate");
+        }
+        public ActionResult Aggregate6()
+        {
+            ViewData["AggregateSample6"] = aggregate.Linq6();
+            ViewData["Anchor"] = "Linq6";
+            return View("Aggregate");
+        }
+        public ActionResult Aggregate7()
+        {
+            ViewData["AggregateSample7"] = aggregate.Linq7();
+            ViewData["Anchor"] = "Linq7";
+            return View("Aggregate");
+        }
+        public ActionResult Aggregate8()
+        {
+            ViewData["AggregateSample8"] = aggregate.Linq8();
+            ViewData["Anchor"] = "Linq8";
+            return View("Aggregate");
+        }
+        public ActionResult Aggregate9()
+        {
+            ViewData["AggregateSample9"] = aggregate.Linq9();
+            ViewData["Anchor"] = "Linq9";
+            return View("Aggregate");
+        }
+        public ActionResult Aggregate10()
+        {
+            ViewData["AggregateSample10"] = aggregate.Linq10();
+            ViewData["Anchor"] = "Linq10";
+            return View("Aggregate");
+        }
+        public ActionResult Aggregate11()
+        {
+            ViewData["AggregateSample11"] = aggregate.Linq11();
+            ViewData["Anchor"] = "Linq11";
+            return View("Aggregate");
+        }
+        public ActionResult Aggregate12()
+        {
+            ViewData["AggregateSample12"] = aggregate.Linq12();
+            ViewData["Anchor"] = "Linq12";
+            return View("Aggregate");
+        }
+        public ActionResult Aggregate13()
+        {
+            ViewData["AggregateSample13"] = aggregate.Linq13();
+            ViewData["Anchor"] = "Linq13";
+            return View("Aggregate");
+        }
+        public ActionResult Aggregate14()
+        {
+            ViewData["AggregateSample14"] = aggregate.Linq14();
+            ViewData["Anchor"] = "Linq14";
+            return View("Aggregate");
+        }
+        public ActionResult Aggregate15()
+        {
+            ViewData["AggregateSample15"] = aggregate.Linq15();
+            ViewData["Anchor"] = "Linq15";
+            return View("Aggregate");
+        }
+        public ActionResult Aggregate16()
+        {
+            ViewData["AggregateSample16"] = aggregate.Linq16();
+            ViewData["Anchor"] = "Linq16";
+            return View("Aggregate");
+        }
+        public ActionResult Aggregate17()
+        {
+            ViewData["AggregateSample17"] = aggregate.Linq17();
+            ViewData["Anchor"] = "Linq17";
+            return View("Aggregate");
+        }
+        public ActionResult Aggregate18()
+        {
+            ViewData["AggregateSample18"] = aggregate.Linq18();
+            ViewData["Anchor"] = "Linq18";
+            return View("Aggregate");
+        }
+        public ActionResult Aggregate19()
+        {
+            ViewData["AggregateSample19"] = aggregate.Linq19();
+            ViewData["Anchor"] = "Linq19";
+            return View("Aggregate");
+        }
+        public ActionResult Aggregate20()
+        {
+            ViewData["AggregateSample20"] = aggregate.Linq20();
+            ViewData["Anchor"] = "Linq20";
+            return View("Aggregate");
+        }
+        #endregion
+
+        #region Miscellaneous-Concat/EqualAll语法
+        public Miscellaneous _miscellaneous;
+        public Miscellaneous miscellaneous
+        {
+            get
+            {
+                if (_miscellaneous == null)
+                    _miscellaneous = new Miscellaneous();
+                return _miscellaneous;
+            }
+        }
+        public ActionResult Miscellaneous()
+        {
+            return View();
+        }
+        public ActionResult Miscellaneous1()
+        {
+            ViewData["MiscellaneousSample1"] = miscellaneous.Linq1();
+            ViewData["Anchor"] = "Linq1";
+            return View("Miscellaneous");
+        }
+        public ActionResult Miscellaneous2()
+        {
+            ViewData["MiscellaneousSample2"] = miscellaneous.Linq2();
+            ViewData["Anchor"] = "Linq2";
+            return View("Miscellaneous");
+        }
+        public ActionResult Miscellaneous3()
+        {
+            ViewData["MiscellaneousSample3"] = miscellaneous.Linq3();
+            ViewData["Anchor"] = "Linq3";
+            return View("Miscellaneous");
+        }
+        public ActionResult Miscellaneous4()
+        {
+            ViewData["MiscellaneousSample4"] = miscellaneous.Linq4();
+            ViewData["Anchor"] = "Linq4";
+            return View("Miscellaneous");
+        }
+        #endregion
+
+    
     }
 }
